@@ -9,17 +9,21 @@ namespace AreaComputer
     
     public class GeometricalFigure
     {
-        protected GeometricalFigure()
-        {
-
-        }
-        public GeometricalFigure(List<Chunk> chunks)
+        
+        public GeometricalFigure(IEnumerable<Chunk> chunks)
         {
             this.chunks = chunks;
-            ComputeArea();
+            ComputeAreaWithChunks();
         }
-         
-        protected void ComputeArea()
+
+        public GeometricalFigure(Func<IList<double>, double> areaFormule, IList<double> arguments)
+        {
+            this.AreaComputeFormule = areaFormule;
+            this.areaArgs = arguments;
+            ComputeAreaWithFormule();
+        }
+
+        public void ComputeAreaWithChunks()
         {
             Area = 0;
             foreach(Chunk chunk in chunks)
@@ -27,9 +31,13 @@ namespace AreaComputer
                 Area = chunk.Area + Area;
             }
         }
-        
-            
-        protected List<Chunk> chunks = new List<Chunk>();
+        public void ComputeAreaWithFormule()
+        {
+            Area = AreaComputeFormule(areaArgs);
+        }
+        public Func<IList<double>, double>? AreaComputeFormule;
+        public IList<double>? areaArgs;
+        public IEnumerable<Chunk>? chunks;
         public double Area {private set;  get;}
         
     }

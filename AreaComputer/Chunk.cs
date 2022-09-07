@@ -23,14 +23,14 @@ namespace AreaComputer
         private Func<double, double> F1;
         private Func<double, double> F2;
         public double Area { get; private set; }
-        private double Integral( double dx)
+        private double Integral(double dx)
         {
             double s = 0;
-            for (double i = x0; i < x-dx; i += dx)
+            for (double i = x0; i < x - dx; i += dx)
             {
                 s += (F1(i) - F2(i) + F1(i + dx) - F2(i + dx)) * dx / 2;
             }
-            return s;
+            return Math.Round(s);
         }
     }
 }
