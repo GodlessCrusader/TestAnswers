@@ -44,6 +44,7 @@
                 HasSquareAngle = true;
 
             areaArgs = new List<double>() { a, b, c };
+
             ComputeAreaWithFormule();
         }
 

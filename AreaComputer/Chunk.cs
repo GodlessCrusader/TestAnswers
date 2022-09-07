@@ -22,7 +22,9 @@ namespace AreaComputer
 
         private Func<double, double> F1;
         private Func<double, double> F2;
+        
         public double Area { get; private set; }
+        
         private double Integral(double dx)
         {
             double s = 0;
@@ -30,7 +32,7 @@ namespace AreaComputer
             {
                 s += (F1(i) - F2(i) + F1(i + dx) - F2(i + dx)) * dx / 2;
             }
-            return Math.Round(s);
+            return s;
         }
     }
 }

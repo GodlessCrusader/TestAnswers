@@ -23,15 +23,15 @@ namespace AreaComputer
             ComputeAreaWithFormule();
         }
 
-        public void ComputeAreaWithChunks()
+        protected void ComputeAreaWithChunks()
         {
             Area = 0;
             foreach(Chunk chunk in chunks)
             {
-                Area = chunk.Area + Area;
+                Area += chunk.Area;
             }
         }
-        public void ComputeAreaWithFormule()
+        protected void ComputeAreaWithFormule()
         {
             Area = AreaComputeFormule(areaArgs);
         }
